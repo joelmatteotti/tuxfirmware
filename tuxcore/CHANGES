@@ -1,0 +1,130 @@
+$Id: CHANGES 3000 2008-12-03 13:32:16Z ks156 $
+
+Approximate change log for TUXCORE by version.
+
+(For more detailed changes, see svn log.)
+
+----------------------------------------------------------------------
+Current:
+
+Version 0.9.1:
+  * Fixed a bug with the timeout.
+
+Version 0.9.0:
+  * Added timeouts on the motors
+  * Fixed a bug with the flippers reset sequence
+  * Decreased the braking delays
+  * Improved the sleep mode
+
+Version 0.6.0:
+
+  * Changed the motor drivers to strong output for the mainboard produced by
+    pacific which doesn't behave the same as the old board. In order to avoid
+    speaker noises when the motor are braked, there's a hardware revision
+    variable which differentiate the 2 types of boards. The old boards keep
+    the same configuration of the motor drivers while the new boards have the
+    strong outputs and an decreased resistor on the VCC switch to avoid
+    speaker noises.
+
+Version 0.5.2:
+
+  * Fixed some standalone commands that were not executed anymore (at
+    startup mainly).
+
+Version 0.5.1:
+
+  * Added a timeout protection on each motor.
+
+  * When connections and disconnections occur while the standalone can't
+    process them (at startup) or too rapidly, both connection and disconnection
+    flags were raised and not necessarily processed in the correct order.
+
+Version 0.5.0:
+
+  * Refactoring of the I2C communication between tuxcore and tuxaudio. Multi-
+    master has been dropped in favor of a master-slave communication.
+    Communications should now be more reliable.
+
+  * Moved the pong function so that they are sent as fast as possible, not one
+    every 100ms anymore. This should point more communication problems in this
+    worst case.
+
+  * Added motor states in the status.
+
+Version 0.4.0:
+
+  * Complete rework of the led functions to support intensity control and
+    fading/pulsing effects.
+
+  * Improved the movement commands and fixed a couple of bugs/limitations.
+    Eyes, mouth, flippers and spinning were all reviewed completely. All
+    functions seems to better mix together. New functions were added to control
+    the motors either by the number of movements or by duration. So it's now
+    possible to have very short movements of a few milliseconds.
+
+  * Added a protection on IR RC5 receiver code so that only codes from kysoh's
+    remote are considered valid. The IR functions need to be refactored in
+    order to support any protcol. But for now I just improved the reliability
+    by rejecting wrong codes.
+
+  * Can now detect when a remote button is pressed or released. Earlier the
+    IR code was only sent once when the button was pressed, now it's sent
+    continuously.
+
+  * Removed the greeting function completely, it was buggy and should probably
+    be implemented by software instead of firmware anyway.
+
+  * Improved doxygen documentation, now available at http://doc.tuxisalive.com
+
+Version 0.3.1:
+
+  * Added battery level measurement. The ADC module has been completely
+    refactored.
+
+  * Reorganization of commands.h is on the way.
+
+  * Versioning of the firmware now has a variation field and a release_type to
+    mark final releases.
+
+  * Added doxygen configuration file. The documentation can be founf online at
+    http://doc.tuxisalive.com.
+
+  * Light measurement is now correctly processed in the daemon to have a
+    somehow linear curve from the 2 different types of measurements (different
+    resisotr values). Thresholds for changing the resistor have been updated.
+
+  * Major cleanup and commenting. Motor and led modules are considered clean.
+
+  * Fixed #6 nd #9 about the leds that were not updated when the eyes were
+    closed.
+
+  * Fixed #7 about the eyes commands.
+
+  * Fixed #8 about the flipper movements.
+ 
+  * Added the missing commands for the motors: CLOSE_EYES_CMD, RAISE_WINGS_CMD,
+    LOWER_WINGS_CMD, etc.
+
+  * Added the basis for the sleep functions although they are unfinished and
+    untested.
+
+  * BUG: when 2 events are happening at the same time, they are conflicting in
+    the event manager.
+
+  * Added programming directives in the Makefile for tuxup, stk500 and jtagice
+    mkii.  
+
+  * Fixed #1 with the patches given by Philippe Teuwen, this now
+    fixes the location of the version, revision and author structures with a
+    linker script in the .version section otherwise gcc is free to change the
+    order. This also fixes the position of the cpu_nbr and ver_major bits in
+    the byte as again gcc is free to change that order though this is much less
+    likely to happen.
+
+Version 0.3.0:
+
+  * Initial public release. This code is considered stable. Most
+    functionalities are implemented. Handling now all movements, IR emitter, IR
+    receiver, phototransistor, blue led's and I2C communication. There's also a
+    standalone behavior implemented but still not configurable from the
+    computer.

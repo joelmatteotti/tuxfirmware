@@ -1,0 +1,13 @@
+$Id: README 492 2007-09-06 12:54:06Z jaguarondi $
+
+TUXCORE is the firmware of the core CPU of Tux Droid.
+The CPU is an ATMega88 of the 8-Bit RISC AVR series from Atmel. This firmware can be compiled with the AVR-GNU toolchain.
+
+To install and compile this firmware, check this how-to:
+
+   http://www.tuxisalive.com/documentation/how-to/setup-the-avr-tool-chain-and-compile-the-firmware
+
+For all information about tuxdroid, please visit:
+
+  http://www.tuxisalive.com
+

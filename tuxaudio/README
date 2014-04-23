@@ -1,0 +1,15 @@
+$Id: README 1024 2008-04-29 15:10:19Z jaguarondi $
+
+TUXAUDIO is the firmware of the audio CPU of Tux Droid.
+The CPU is an ATMega88 of the 8-Bit RISC AVR series from Atmel. This firmware can be compiled with the AVR-GNU toolchain.
+
+The audio CPU handles communication with the RF module on the spi port, the communication with the core CPU on the i2c port, the spi data flash to store and play local sounds, the microphone input and the speaker output. Some I/O are also connected to switches like the flippers, the head and the power plug.
+
+To install and compile this firmware, check this how-to:
+
+   http://www.tuxisalive.com/documentation/how-to/setup-the-avr-tool-chain-and-compile-the-firmware
+
+For all information about tuxdroid, please visit:
+
+  http://www.tuxisalive.com
+

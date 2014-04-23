@@ -1,0 +1,6 @@
+$Id: TODO 1459 2008-08-11 12:56:32Z jaguarondi $
+
+- Add functions to change configuration registers from the computer and store
+  them in the eeprom.
+
+- Add sleep mode.

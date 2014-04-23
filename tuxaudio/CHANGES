@@ -1,0 +1,91 @@
+$Id: CHANGES 2997 2008-12-03 13:28:41Z ks156 $
+
+Approximate change log for TUXAUDIO by version.
+
+(For more detailed changes, see svn log.)
+
+----------------------------------------------------------------------
+Current: 
+
+Version 0.9.1:
+  * Improved the timing to avoid a bad audio quality on some Tux.
+
+Version 0.9.0:
+  * Fixed severals bugs
+  * Added versionning of the RF boards
+  * Improved the sleep mode
+
+Version 0.6.0:
+
+  X Nothing changed on tuxaudio.
+
+Version 0.5.2:
+
+  * Increased the power-up delay of the RF that seems too short on some tuxs.
+
+Version 0.5.1:
+
+  * Changed the initialization of the RF and powering of the microphone.
+    Sometimes the RF didn't start correctly because of this.
+
+Version 0.5.0:
+
+  * Refactoring of the I2C communication between tuxcore and tuxaudio. Multi-
+    master has been dropped in favor of a master-slave communication.
+    Communications should now be more reliable.
+
+  * Added 2 modules: parser and misc. The parser functions spread in main.c and
+    communication.c are now merged into one function in parser.c. All commands
+    coming from the RF and tuxcore will be parsed by the same function.
+
+  * All fifo now use the fifo module.
+
+  * Power saving for sleep added in the flash module.
+
+  * Simpler audio stack adaptation.
+
+  * Bug fixes (specially in the flash module) and cleanup.
+
+Version 0.4.0:
+
+  * Completely refactored the internal sounds storage and the data flash
+    handling to better support the audio flash application. A couple of status
+    regarding internal sounds have been added.
+
+  * Improved doxygen documentation, now available at http://doc.tuxisalive.com
+
+Version 0.3.1:
+
+  * Versioning of the firmware now has a variation field and a release_type to
+    mark final releases.
+
+  * Reviewed the flash playing function to use a fifo and to be able to keep
+    sending the status when a sound is played from the sound flash. Some new
+    status are now also sent during playing and programming of the sound flash
+    memory. Bug fixes too.
+
+  * Refactored the audio flash module and the flash functions are now moved to
+    their own module (AT26F004), many bug fixes.
+
+  * Imroved the powering of the microphone, the sounds that were heard at
+    startup should now be gone.
+
+  * Added the basis for the sleep functions although they are unfinished and
+    untested.
+
+  * Added programming directives in the Makefile for tuxup, stk500 and jtagice
+    mkii.  
+
+  * Some cleanup.
+
+  * Fixed #1 with the patches given by Philippe Teuwen, this now
+    fixes the location of the version, revision and author structures with a
+    linker script in the .version section otherwise gcc is free to change the
+    order. This also fixes the position of the cpu_nbr and ver_major bits in
+    the byte as again gcc is free to change that order though this is much less
+    likely to happen.
+
+Version 0.3.0:
+
+  * Initial public release. This code is considered stable.
+
